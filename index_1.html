@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRAND CITY 1 (GC1)</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="game-canvas"></canvas>
+
+  <!-- Loader -->
+  <div id="loader" class="screen">
+    <div class="logo small">GC1</div>
+    <div class="loader-text">Building Grand City…</div>
+  </div>
+
+  <!-- Main menu -->
+  <div id="screen-menu" class="screen hidden menu">
+    <div class="menu-wrap">
+      <div class="logo-sub">THE GRAND CITY SERIES</div>
+      <h1 class="logo">GRAND CITY <span>1</span></h1>
+      <div class="logo-tag">GC1 · Welcome to the Coast</div>
+      <nav class="menu-buttons">
+        <button id="btn-play" class="btn primary">Play</button>
+        <button id="btn-settings-menu" class="btn">Settings</button>
+        <button id="btn-about-menu" class="btn">About</button>
+      </nav>
+    </div>
+    <div class="menu-footer">© GRAND CITY Studios · Prototype build 0.1</div>
+  </div>
+
+  <!-- In-game HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-top-left">
+      <div class="panel mission-panel">
+        <div class="mission-label">MISSION</div>
+        <div id="mission-title">—</div>
+        <div id="mission-objective">—</div>
+      </div>
+    </div>
+    <div id="hud-bottom-left">
+      <div class="health-wrap"><div id="health-fill"></div></div>
+      <div id="money" class="money">$500</div>
+      <div id="level" class="sub">RESPECT LV 1 · 0 / 200 XP</div>
+    </div>
+    <div id="hud-bottom-right">
+      <div id="vehicle-hud" class="hidden">
+        <div><span id="speed">0</span> <small>KM/H</small></div>
+        <div id="vehicle-name"></div>
+      </div>
+      <canvas id="minimap" width="200" height="200"></canvas>
+    </div>
+    <div id="prompt" class="prompt hidden"></div>
+    <div id="dialogue" class="dialogue hidden">
+      <div id="dialogue-name"></div>
+      <div id="dialogue-line"></div>
+    </div>
+    <div id="toasts"></div>
+    <div id="wasted" class="hidden">WASTED</div>
+    <div id="hint" class="hint hidden">Click here to take mouse control</div>
+  </div>
+
+  <!-- Pause -->
+  <div id="screen-pause" class="screen overlay hidden">
+    <div class="panel-card center">
+      <h2 class="h2">Paused</h2>
+      <button id="btn-resume" class="btn primary">Resume</button>
+      <button id="btn-settings-pause" class="btn">Settings</button>
+      <button id="btn-quit" class="btn">Quit to Menu</button>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div id="screen-settings" class="screen overlay hidden">
+    <div class="panel-card">
+      <h2 class="h2">Settings</h2>
+      <label class="row-label">Mouse sensitivity
+        <input type="range" id="set-sens" min="0.0005" max="0.006" step="0.0002">
+      </label>
+      <label class="row-label">Master volume
+        <input type="range" id="set-vol" min="0" max="1" step="0.05">
+      </label>
+      <label class="row-label">Graphics quality
+        <select id="set-quality">
+          <option value="high">High</option>
+          <option value="low">Low (older PCs)</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="set-minimap"> Show minimap</label>
+      <label class="check"><input type="checkbox" id="set-invert"> Invert camera vertical</label>
+      <div class="controls-help">
+        WASD move / drive · Mouse camera · Shift sprint · Space jump (handbrake in car) ·
+        F enter/exit vehicle · E talk · H horn · P pause
+      </div>
+      <div class="row-buttons">
+        <button id="btn-settings-reset" class="btn">Reset defaults</button>
+        <button class="btn primary" data-back="settings">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="screen-about" class="screen overlay hidden">
+    <div class="panel-card about">
+      <h2 class="h2">About GRAND CITY 1</h2>
+      <p>GRAND CITY 1 (GC1) is the first chapter of the GRAND CITY franchise: an original
+        open-world crime-action game set in a fictional coastal metropolis inspired by California.</p>
+      <p>This prototype lets you walk and drive across a large city, discover districts, and
+        play the opening storyline of Silas Brenn, Lena Morrow and Victor Hale.</p>
+      <p class="muted">All characters, vehicles and places are original fiction.</p>
+      <button class="btn primary" data-back="screen-menu">Back</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/vehicles.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/missions.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
